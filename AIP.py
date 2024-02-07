@@ -75,6 +75,7 @@ def install(package_name):
         print(f"{Fore.BLACK}[AIP]{Style.RESET_ALL} {package_name} installing ")
         if _run_command([sys.executable, '-m', 'pip', 'install', '--upgrade', package_name]) == None:
             print(f"{Fore.RED}[AIP]{Style.RESET_ALL} {package_name} not installed")
+            exit()
         else:
             print(f"{Fore.GREEN}[AIP]{Style.RESET_ALL} {package_name} installed")
 
@@ -87,7 +88,6 @@ def __custom_exception_handler(exception_type, exception, traceback):
     if exception_type == ModuleNotFoundError:
         package_name = exception.name  
         install(package_name)
-
     else:
         sys.__excepthook__(exception_type, exception, traceback)
 
