@@ -40,6 +40,8 @@ import bs4
 print('Hehe! i dont need to install any requirements')
 ```
 **output:**
+
+
 ![pic](https://uploadkon.ir/uploads/cd8207_24Capture.jpg)
 
 
