@@ -80,7 +80,7 @@ def install(package_name):
             print(f"{Fore.GREEN}[AIP]{Style.RESET_ALL} {package_name} installed")
 
 
-    code = subprocess.call([sys.executable, sys.argv[0]])  
+     
 
 
               
@@ -88,6 +88,7 @@ def __custom_exception_handler(exception_type, exception, traceback):
     if exception_type == ModuleNotFoundError:
         package_name = exception.name  
         install(package_name)
+        code = subprocess.call([sys.executable, sys.argv[0]]) 
     else:
         sys.__excepthook__(exception_type, exception, traceback)
 
