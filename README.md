@@ -1,5 +1,3 @@
-# aip
-Auto Install Packages 
 <p align="center">
   <img src="https://i.ytimg.com/vi/-1qju6V1jLM/maxresdefault.jpg" alt="ahhh">
 </p>
@@ -7,7 +5,6 @@ Auto Install Packages
 
 # Auto Install Package (AIP)
 **Hehehehhehhheheh, install and deploy your code requirements faster than you thought**
-
 
 
 ## installing
@@ -43,20 +40,7 @@ import bs4
 print('Hehe! i dont need to install any requirements')
 ```
 **output:**
+![pic](https://uploadkon.ir/uploads/cd8207_24Capture.jpg)
 
 
-
-
-### stage 1
-auto installing with manual package name 
-```python
-import AIP
-AIP.install('numpy')
-import numpy
-import bs4
-# and more and more...
-
-print('Hehe! i dont need to install any requirements')
-```
-**output:**
 
