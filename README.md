@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhZqSgiNN9RKX_5fpW7luwBVSA0X_EizoqWYNuj3vEUg&s" alt="ahhh">
-</p>
-
-
+ 
 # Auto Install Package (AIP)
 **Hehehehhehhheheh, install and deploy your code requirements faster than you thought**
 
