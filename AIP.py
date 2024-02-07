@@ -64,33 +64,30 @@ if __name__ == "__main__":
                         f"\n{Fore.BLACK}\"Note: This script cannot be used outside your local environment\"{Style.RESET_ALL}")
                 except Exception as e:
                     print(f"Error on installing package on local-package:\n{e}")
-                    
+
+
+def install(package_name):
+    if not _is_package_installed("colorama"):
+        _run_command([sys.executable, '-m', 'pip', 'install', '--upgrade', 'colorama'])
+
+    from colorama import Fore, Style
+    if _is_package_installed(package_name) != True:
+        print(f"{Fore.BLACK}[AIP]{Style.RESET_ALL} {package_name} installing ")
+        if _run_command([sys.executable, '-m', 'pip', 'install', '--upgrade', package_name]) == None:
+            print(f"{Fore.RED}[AIP]{Style.RESET_ALL} {package_name} not installed")
+        else:
+            print(f"{Fore.GREEN}[AIP]{Style.RESET_ALL} {package_name} installed")
+
+
+    code = subprocess.call([sys.executable, sys.argv[0]])  
+
+
+              
 def __custom_exception_handler(exception_type, exception, traceback):
     if exception_type == ModuleNotFoundError:
         package_name = exception.name  
-        def __install(package_name):
-            if not _is_package_installed("colorama"):
-                _run_command([sys.executable, '-m', 'pip', 'install', '--upgrade', 'colorama'])
+        install(package_name)
 
-            from colorama import Fore, Style
-            if _is_package_installed(package_name) != True:
-                print(f"{Fore.BLACK}[AIP]{Style.RESET_ALL} {package_name} installing ")
-                if _run_command([sys.executable, '-m', 'pip', 'install', '--upgrade', package_name]) == None:
-                    print(f"{Fore.RED}[AIP]{Style.RESET_ALL} {package_name} not installed")
-                else:
-                    print(f"{Fore.GREEN}[AIP]{Style.RESET_ALL} {package_name} installed")
-
-
-        try:
-            __install(package_name)
-        except Exception as e:
-            print(e)
-
-        code = subprocess.call([sys.executable, sys.argv[0]])
-        if code == 0:
-            print('all package installed ')
-            # subprocess.run([sys.executable, sys.argv[0]])
-        
     else:
         sys.__excepthook__(exception_type, exception, traceback)
 
