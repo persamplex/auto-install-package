@@ -65,7 +65,7 @@ if __name__ == "__main__":
                 except Exception as e:
                     print(f"Error on installing package on local-package:\n{e}")
                     
-def custom_exception_handler(exception_type, exception, traceback):
+def __custom_exception_handler(exception_type, exception, traceback):
     if exception_type == ModuleNotFoundError:
         package_name = exception.name  
         def __install(package_name):
@@ -74,7 +74,7 @@ def custom_exception_handler(exception_type, exception, traceback):
 
             from colorama import Fore, Style
             if _is_package_installed(package_name) != True:
-                print(f"{Fore.GREEN}[AIP]{Style.RESET_ALL} {package_name} installing ")
+                print(f"{Fore.BLACK}[AIP]{Style.RESET_ALL} {package_name} installing ")
                 if _run_command([sys.executable, '-m', 'pip', 'install', '--upgrade', package_name]) == None:
                     print(f"{Fore.RED}[AIP]{Style.RESET_ALL} {package_name} not installed")
                 else:
@@ -85,13 +85,9 @@ def custom_exception_handler(exception_type, exception, traceback):
             __install(package_name)
         except Exception as e:
             print(e)
-
-        from colorama import Fore, Style
-        print(f"{Fore.GREEN}[AIP]{Style.RESET_ALL} All necessary packages installed")
-        sub = subprocess.run([sys.executable, sys.argv[0]])
         
     else:
         sys.__excepthook__(exception_type, exception, traceback)
 
-sys.excepthook = custom_exception_handler
+sys.excepthook = __custom_exception_handler
     
